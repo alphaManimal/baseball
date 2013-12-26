@@ -1,6 +1,8 @@
 from app import app
 from flask import render_template
+from flask import request
 import json
+import models
 
 @app.route('/')
 def home():
@@ -14,14 +16,6 @@ def viz():
 # example data service routing
 @app.route('/dataservices/<service>')
 def dataservices(service):
-    if service == 'pitchers':
-        return json.dumps(
-            [{"pitcher":"some guy"},
-             {"pitcher":"some other guy"},
-             {"pitcher":"the last guy"}])
-
-    elif service == 'teams':
-        return json.dumps(
-            [{"team":"baltimore orioles"},
-             {"team":"san francisco giants"},
-             {"team":"washington nationals"}])
+    # a test
+    if service == 'tables':
+        return models.dataserver(service)
